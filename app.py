@@ -12,10 +12,11 @@ st.set_page_config(
 # Ruta del archivo CSV
 csv_file_path = 'usuarios.csv'
 
-# Cargar datos existentes o crear DataFrame vacío si no existe el archivo
+# Verificar si el archivo CSV existe en el directorio actual
 if os.path.exists(csv_file_path):
     dfUsuarios = pd.read_csv(csv_file_path)
 else:
+    # Crear un DataFrame vacío con las columnas necesarias
     dfUsuarios = pd.DataFrame(columns=['nombre', 'celular', 'contrasena'])
 
 # Estilos CSS para mejorar el diseño
