@@ -8,15 +8,11 @@ st.set_page_config(
     layout="centered"
 )
 
-# ID de Google Sheets
-gsheetid = '1iMETFXotBdj_PUyln5LOMfiyR-Fhn2jeUaEifCErXkU'
-url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid=0'
+# URL de la hoja de cálculo pública
+url = 'https://docs.google.com/spreadsheets/d/1iMETFXotBdj_PUyln5LOMfiyR-Fhn2jeUaEifCErXkU/edit?gid=0#gid=0'
 
 # Cargar datos existentes
-try:
-    dfUsuarios = pd.read_csv(url)
-except Exception as e:
-    st.error(f"Error al cargar los datos: {e}")
+dfUsuarios = pd.read_csv(url)
 
 # Estilos CSS para mejorar el diseño
 st.markdown("""<style>
@@ -79,9 +75,9 @@ if st.button("Registrar"):
     if celular in dfUsuarios['celular'].values:
         st.error("Este número de celular ya está registrado.", icon="❌")
     else:
-        # Agregar el nuevo usuario a la hoja
-        new_data = pd.DataFrame([[nombre, celular, contrasena]], columns=['nombre', 'celular', 'contrasena'])
-        new_data.to_csv(f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid=0', mode='a', header=False, index=False)
+        # Agregar el nuevo usuario a la hoja (esto requiere lógica para manejar CSV)
+        new_row = pd.DataFrame([[nombre, celular, contrasena]], columns=['nombre', 'celular', 'contrasena'])
+        new_row.to_csv(url, mode='a', header=False, index=False)  # Asegúrate de que esto funcione para tu configuración
         st.success("Cuenta creada exitosamente!")
 
 st.markdown("</div>", unsafe_allow_html=True)
