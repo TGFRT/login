@@ -12,7 +12,7 @@ st.set_page_config(
 # Ruta del archivo CSV
 csv_file_path = 'usuarios.csv'
 
-# Cargar datos existentes
+# Cargar datos existentes o crear DataFrame vacío si no existe el archivo
 if os.path.exists(csv_file_path):
     dfUsuarios = pd.read_csv(csv_file_path)
 else:
