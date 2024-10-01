@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 # Configuración de la aplicación
 st.set_page_config(
@@ -8,11 +9,14 @@ st.set_page_config(
     layout="centered"
 )
 
-# URL de la hoja de cálculo pública
-url = 'https://docs.google.com/spreadsheets/d/1iMETFXotBdj_PUyln5LOMfiyR-Fhn2jeUaEifCErXkU/edit?gid=0#gid=0'
+# Ruta del archivo CSV
+csv_file_path = 'usuarios.csv'
 
 # Cargar datos existentes
-dfUsuarios = pd.read_csv(url)
+if os.path.exists(csv_file_path):
+    dfUsuarios = pd.read_csv(csv_file_path)
+else:
+    dfUsuarios = pd.DataFrame(columns=['nombre', 'celular', 'contrasena'])
 
 # Estilos CSS para mejorar el diseño
 st.markdown("""<style>
@@ -75,9 +79,12 @@ if st.button("Registrar"):
     if celular in dfUsuarios['celular'].values:
         st.error("Este número de celular ya está registrado.", icon="❌")
     else:
-        # Agregar el nuevo usuario a la hoja (esto requiere lógica para manejar CSV)
-        new_row = pd.DataFrame([[nombre, celular, contrasena]], columns=['nombre', 'celular', 'contrasena'])
-        new_row.to_csv(url, mode='a', header=False, index=False)  # Asegúrate de que esto funcione para tu configuración
+        # Agregar el nuevo usuario al DataFrame
+        new_user = pd.DataFrame([[nombre, celular, contrasena]], columns=['nombre', 'celular', 'contrasena'])
+        dfUsuarios = pd.concat([dfUsuarios, new_user], ignore_index=True)
+        
+        # Guardar en el archivo CSV
+        dfUsuarios.to_csv(csv_file_path, index=False)
         st.success("Cuenta creada exitosamente!")
 
 st.markdown("</div>", unsafe_allow_html=True)
