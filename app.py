@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # ID de Google Sheets
-gsheetid = '1OVVjcFBFDOYcbmfqriYmfRke2MexzbjSvbknTwcnatk'
+gsheetid = '1iMETFXotBdj_PUyln5LOMfiyR-Fhn2jeUaEifCErXkU'
 url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid=0'
 
 # Cargar datos existentes
