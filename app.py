@@ -10,7 +10,7 @@ st.set_page_config(
 st.title("Encuesta de Registro")
 
 # URL del Google Form
-form_url = "https://docs.google.com/forms/d/e/1FAIpQLSc1PGpaEm37ns8m-aXN0XJx03FLLphVGIXY_7N_xPLO0_hC-A/viewform?embedded=true"
+form_url = "https://docs.google.com/forms/d/e/1FAIpQLSc1PGpaEm37ns8m-aXN0XJx03FLLphVGIXY_7N_xPLO0_hC-A/viewform?usp=sf_link"
 
 # Estilos CSS para las franjas
 st.markdown("""
@@ -32,8 +32,13 @@ st.markdown("""
         .iframe-container {
             position: relative;
             z-index: 0;  /* Coloca el iframe detrás de las franjas */
-            margin-top: 100px; /* Espacio para la franja superior */
-            margin-bottom: 100px; /* Espacio para la franja inferior */
+            height: calc(100vh - 200px); /* Ajustar altura del iframe para que quede entre las franjas */
+            overflow: hidden; /* Oculta cualquier desbordamiento */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Eliminar borde */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -45,7 +50,7 @@ st.markdown('<div class="franja-inferior"></div>', unsafe_allow_html=True)
 # Incrustar el formulario usando iframe
 st.markdown(
     '<div class="iframe-container">'
-    f'<iframe src="{form_url}" width="640" height="782" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>'
+    f'<iframe src="{form_url}">Cargando…</iframe>'
     '</div>',
     unsafe_allow_html=True
 )
