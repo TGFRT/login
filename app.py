@@ -17,23 +17,23 @@ st.markdown("""
     <style>
         .barra {
             background-color: #ffffff;  /* Color blanco sólido */
-            height: 80px; /* Altura de la barra aumentada */
+            height: 80px; /* Altura de la barra */
             position: absolute;
-            top: 20px; /* Espacio desde la parte superior */
+            top: 0; /* La barra ahora está en la parte superior */
             left: 0;
             right: 0;
             z-index: 2;  /* Asegúrate de que esté encima del iframe */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px; /* Tamaño de la fuente aumentado */
+            font-size: 24px; /* Tamaño de la fuente */
             font-weight: bold; /* Negrita */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para efecto */
         }
         .iframe-container {
             position: relative;
-            z-index: 0;  /* Coloca el iframe detrás de las franjas */
-            height: calc(100vh - 100px); /* Ajustar altura del iframe para que quede debajo de la barra */
+            z-index: 0;  /* Coloca el iframe detrás de la barra */
+            height: calc(100vh - 80px); /* Ajustar altura del iframe para que ocupe el resto de la pantalla */
             overflow: hidden; /* Oculta cualquier desbordamiento */
         }
         iframe {
