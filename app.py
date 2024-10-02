@@ -12,12 +12,12 @@ st.title("Encuesta de Registro")
 # URL del Google Form
 form_url = "https://docs.google.com/forms/d/e/1FAIpQLSc1PGpaEm37ns8m-aXN0XJx03FLLphVGIXY_7N_xPLO0_hC-A/viewform?usp=sf_link"
 
-# Estilos CSS para la barra
+# Estilos CSS para la barra y el iframe
 st.markdown("""
     <style>
         .barra {
             background-color: #ffffff;  /* Color blanco sólido */
-            height: 80px; /* Altura de la barra */
+            height: 100px; /* Aumentar altura de la barra */
             position: absolute;
             top: 0; /* La barra ahora está en la parte superior */
             left: 0;
@@ -26,19 +26,18 @@ st.markdown("""
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px; /* Tamaño de la fuente */
+            font-size: 30px; /* Aumentar tamaño de la fuente */
             font-weight: bold; /* Negrita */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional para efecto */
         }
         .iframe-container {
             position: relative;
             z-index: 0;  /* Coloca el iframe detrás de la barra */
-            height: calc(100vh - 80px); /* Ajustar altura del iframe para que ocupe el resto de la pantalla */
-            overflow: hidden; /* Oculta cualquier desbordamiento */
+            height: calc(100vh - 100px); /* Ajustar altura del iframe para que ocupe el resto de la pantalla */
         }
         iframe {
             width: 100%;
-            height: 100%;
+            height: 100%; /* Asegurar que el iframe ocupe el 100% de la altura */
             border: none; /* Eliminar borde */
         }
     </style>
