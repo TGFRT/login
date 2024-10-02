@@ -7,7 +7,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("Encuesta de Registro")
+
 
 # URL del Google Form
 form_url = "https://docs.google.com/forms/d/e/1FAIpQLSc1PGpaEm37ns8m-aXN0XJx03FLLphVGIXY_7N_xPLO0_hC-A/viewform?usp=sf_link"
